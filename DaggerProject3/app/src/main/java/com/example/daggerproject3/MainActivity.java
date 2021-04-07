@@ -13,7 +13,7 @@ import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity {
 
     @Inject
-    Mobile mobil;
+    Mobile mobile1,mobile2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         MobileComponent component = DaggerMobileComponent.factory().create(4,3,64);
 
         component.inject(this);
-        mobil.run();
+        mobile1.run();
+        mobile2.run();
     }
 }
 

@@ -6,10 +6,12 @@ import com.example.daggerproject3.module.CameraModule;
 import com.example.daggerproject3.module.MediaTekModule;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
 
+@Singleton
 @Component(modules = {BatteryModule.class, MediaTekModule.class, CameraModule.class})
 public interface MobileComponent {
 

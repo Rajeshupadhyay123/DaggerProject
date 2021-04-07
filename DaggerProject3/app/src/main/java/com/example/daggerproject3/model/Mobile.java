@@ -15,7 +15,7 @@ public class Mobile {
         this.battery = battery;
         this.processor = processor;
         this.camera=camera;
-        Log.i("mobile", "Mobile: ");
+        Log.i("mobile", "Battery: "+battery.toString()+" "+this.toString());
     }
 
     public void run() {

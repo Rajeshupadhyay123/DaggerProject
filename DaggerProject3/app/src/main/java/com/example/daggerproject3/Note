@@ -1,0 +1,26 @@
+Uses of the @Singleton annotation
+
+========================================
+1--- In the module class with @Provides annotation
+2--- In the module class with @Binds annotation
+3---If in a class we are using the constructor Injection with @Inject annotation in that case we can
+        use the @Singleton annotation in above of the class defination...
+
+ =====================================
+ But Note-----
+  If we are using the @Singleton annotation then it is mandatory to use in component class in above
+  of the @Component annotation..................................
+
+  If we uses the multiple reference of the component class then our singleton object will also be recreated not reuse
+  for exe:--
+        MobileComponent component1 = DaggerMobileComponent.factory().create(4,3,64);
+        MobileComponent component2 = DaggerMobileComponent.factory().create(4,3,64);
+        MobileComponent component3 = DaggerMobileComponent.factory().create(4,3,64);
+
+        Here there are three object reference of the component class then here 3 object of the Battery
+        class will also be created it doesn't mean they are singleton.
+
+  ==============================================
+  Why we uses the Singleton------------
+  If we will be use the singleton annotation, we does not need to recreate the object if they are already
+  created. It also reuse the old one....................
