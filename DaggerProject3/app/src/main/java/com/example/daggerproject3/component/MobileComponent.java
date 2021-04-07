@@ -1,6 +1,7 @@
 package com.example.daggerproject3.component;
 
 import com.example.daggerproject3.MainActivity;
+import com.example.daggerproject3.model.Mobile;
 import com.example.daggerproject3.module.BatteryModule;
 import com.example.daggerproject3.module.CameraModule;
 import com.example.daggerproject3.module.MediaTekModule;
@@ -14,6 +15,8 @@ import dagger.Component;
 @Singleton
 @Component(modules = {BatteryModule.class, MediaTekModule.class, CameraModule.class})
 public interface MobileComponent {
+
+    Mobile getMobile();
 
     void inject(MainActivity activity);
 

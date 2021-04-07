@@ -1,3 +1,4 @@
+================================================================================================================
 Uses of the @Singleton annotation
 
 ========================================
@@ -6,7 +7,7 @@ Uses of the @Singleton annotation
 3---If in a class we are using the constructor Injection with @Inject annotation in that case we can
         use the @Singleton annotation in above of the class defination...
 
- =====================================
+ ==================================================================================================================
  But Note-----
   If we are using the @Singleton annotation then it is mandatory to use in component class in above
   of the @Component annotation..................................
@@ -20,7 +21,37 @@ Uses of the @Singleton annotation
         Here there are three object reference of the component class then here 3 object of the Battery
         class will also be created it doesn't mean they are singleton.
 
-  ==============================================
+
+    -----------So if we want the single object in whole app lifecycle
+    Then for solving this issue......................
+    ==========================================
+    step-1: First create a class that extends the Application class (i.e: MainApplication extends Application)
+    step-2: Then create the instance reference of the Component class.
+            i.e: MobileComponent component:
+    step-3: override the onCreate() method and define the class defenetiton
+            i.e: component = DaggerMobileComponent.factory().create(4,3,64);
+     step-4: Then create the getter method
+
+     step-5: Now goes to the class where we want to use the component class reference and then
+            call the getApplication() method and type cast to the extended class and then call the
+            getter method.
+            i.e: ((MainApplication)getApplication()).getComponent();
+
+            it will return the MobileComponent class reference
+            MobileComponent component=((MainApplication)getApplication()).getComponent();
+
+            Now we can use this component class reference it will always be create the single object
+            in the whole application life cycle.
+
+      step-6: Import goes to the manifest file and write this in the Application tag--
+                android:name=".MainApplication"
+                (MainApplication is a extended class of the Application).
+
+
+    It solve the issue of recreation of the component class. Here we created the component class
+    object once and use in every where.
+
+  =======================================================================================================================
   Why we uses the Singleton------------
   If we will be use the singleton annotation, we does not need to recreate the object if they are already
   created. It also reuse the old one....................
