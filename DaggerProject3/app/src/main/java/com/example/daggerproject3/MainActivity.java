@@ -7,7 +7,6 @@ import android.os.Bundle;
 import com.example.daggerproject3.component.DaggerMobileComponent;
 import com.example.daggerproject3.component.MobileComponent;
 import com.example.daggerproject3.model.Mobile;
-import com.example.daggerproject3.module.SnapdragonModule;
 
 import javax.inject.Inject;
 
@@ -21,10 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MobileComponent component = DaggerMobileComponent.builder()
-                .setClockSpeed(4)
-                .setCore(2)
-                .build();
+        MobileComponent component = DaggerMobileComponent.factory().create(4,3,64);
 
         component.inject(this);
         mobil.run();
